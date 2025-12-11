@@ -1,8 +1,8 @@
 # Tor Network Node Tracker
 
-![Relay Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdoodad-labs%2Ftor-nodes%2Frefs%2Fheads%2Fmain%2Finfo%2Frelay-nodes.json&style=flat-square)
-![Guard Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdoodad-labs%2Ftor-nodes%2Frefs%2Fheads%2Fmain%2Finfo%2Fguard-nodes.json&style=flat-square)
-![Exit Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdoodad-labs%2Ftor-nodes%2Frefs%2Fheads%2Fmain%2Finfo%2Fexit-nodes.json&style=flat-square)
+[![Relay Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdoodad-labs%2Ftor-nodes%2Frefs%2Fheads%2Fmain%2Finfo%2Frelay-nodes.json&style=flat-square)](https://github.com/doodad-labs/tor-nodes/blob/main/active/relay-nodes.txt)
+[![Guard Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdoodad-labs%2Ftor-nodes%2Frefs%2Fheads%2Fmain%2Finfo%2Fguard-nodes.json&style=flat-square)](https://github.com/doodad-labs/tor-nodes/blob/main/active/guard-nodes.txt)
+[![Exit Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdoodad-labs%2Ftor-nodes%2Frefs%2Fheads%2Fmain%2Finfo%2Fexit-nodes.json&style=flat-square)](https://github.com/doodad-labs/tor-nodes/blob/main/active/exit-nodes.txt)
 
 Automated hourly archive of active Tor network nodes (relay/exit/guard) with current and historical data.
 
