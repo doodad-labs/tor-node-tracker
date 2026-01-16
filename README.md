@@ -26,15 +26,15 @@ This system continuously monitors and archives Tor network infrastructure by col
 │   └── guard-nodes.txt         # Guard-capable relays (Plain text)
 │
 └── history/                    # Historical archives
-     ├── YYYY
-     └── MM
-         └── YYYY-MM-DD/            # Daily snapshots
-             ├── relay-nodes.json   # All active relays (JSON)
-             ├── relay-nodes.txt    # All active relays (Plain text)
-             ├── exit-nodes.json    # Exit-capable relays (JSON)
-             ├── exit-nodes.txt     # Exit-capable relays (Plain text)
-             ├── guard-nodes.json   # Guard-capable relays (JSON)
-             └── guard-nodes.txt    # Guard-capable relays (Plain text)
+     └── YYYY/
+         └── MM/
+             └── YYYY-MM-DD/            # Daily snapshots
+                 ├── relay-nodes.json   # All active relays (JSON)
+                 ├── relay-nodes.txt    # All active relays (Plain text)
+                 ├── exit-nodes.json    # Exit-capable relays (JSON)
+                 ├── exit-nodes.txt     # Exit-capable relays (Plain text)
+                 ├── guard-nodes.json   # Guard-capable relays (JSON)
+                 └── guard-nodes.txt    # Guard-capable relays (Plain text)
 ```
 
 ## Data Specifications
