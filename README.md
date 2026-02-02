@@ -61,3 +61,9 @@ The data is suitable for:
 ## Automation
 
 All data collection, processing, and archiving is fully automated through scheduled workflows, ensuring consistent updates without manual intervention.
+
+## Outage History
+
+Sometimes monitoring systems go offline or break this is a log of all them instances.
+
+- 02/02/2026 @ 6:21 PM `github actions outages` 
