@@ -67,13 +67,13 @@ z = node_counts['node_count'].values
 
 # Plot scatter points (with capped sizes for better visibility)
 if len(x) > 0:
-    # Cap bubble sizes - max size of 50 for better visibility with many points
+    # Scale and cap bubble sizes - min 10, max 50 for better visibility with many points
     bubble_sizes = z * 0.5
-    bubble_sizes = bubble_sizes.clip(max=50)
+    bubble_sizes = bubble_sizes.clip(min=10, max=50)
     
     scatter = plt.scatter(
         x, y,
-        s=bubble_sizes,      # Size capped at 50 for visibility
+        s=bubble_sizes,      # Size between 10 and 50 for visibility
         c=z,                # Color by node count
         alpha=0.6,
         cmap='autumn',
