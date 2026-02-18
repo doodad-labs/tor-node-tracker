@@ -82,11 +82,6 @@ if len(x) > 0:
         vmin=0,
         vmax=z.max()
     )
-    
-    # Add colorbar with smaller size
-    cbar = plt.colorbar(scatter, label='Number of Nodes', ax=ax, shrink=0.6, pad=0.02)
-    cbar.ax.tick_params(labelsize=8)
-    cbar.set_label('Number of Nodes', fontsize=9)
 else:
     print("No location data to plot")
 
