@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 from pathlib import Path
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
+from datetime import datetime
 
 # Configuration
 SCRIPT_DIR = Path(__file__).parent
@@ -90,9 +91,25 @@ def combine_charts():
     # Paste bottom image with vertical gap
     combined_img.paste(bottom_resized, (0, top_target_height + VERTICAL_GAP))
     
+    # Add timestamp in bottom left
+    draw = ImageDraw.Draw(combined_img)
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S UTC")
+    
+    # Try to use a system font, fall back to default if not available
+    try:
+        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 14)
+    except (IOError, OSError):
+        font = ImageFont.load_default()
+    
+    # Add text with padding from bottom-left corner
+    text_x = 10
+    text_y = combined_height - 25
+    draw.text((text_x, text_y), f"Generated: {timestamp}", fill="gray", font=font)
+    
     # Save combined image
     combined_img.save(OUTPUT_FILE, "PNG")
     print(f"\n✓ Combined chart saved: {OUTPUT_FILE}")
+    print(f"  Timestamp: {timestamp}")
     
     return True
 
