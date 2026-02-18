@@ -37,13 +37,13 @@ jobs:
           git config --local user.email "doodadlabs-threat-analytics@users.noreply.github.com"
           git config --local user.name "Doodadlabs Threat Analytics"
           
-          # Check if there are changes
-          if git diff --quiet stats/*.png; then
-            echo "No changes to commit"
-          else
+          # Check if there are changes (including untracked files)
+          if git status --porcelain | grep -q stats/.*\.png; then
             git add stats/network-chart.png stats/node-distribution-pie.png
             git commit -m "chore: update analytics charts [automated]"
             git push
+          else
+            echo "No changes to commit"
           fi
 
       - name: Check workflow status
