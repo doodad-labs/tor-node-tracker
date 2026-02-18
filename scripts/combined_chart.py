@@ -97,13 +97,13 @@ def combine_charts():
     
     # Try to use a system font, fall back to default if not available
     try:
-        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 14)
+        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 24)
     except (IOError, OSError):
         font = ImageFont.load_default()
     
     # Add text with padding from bottom-left corner
     text_x = 10
-    text_y = combined_height - 25
+    text_y = combined_height - 35
     draw.text((text_x, text_y), f"Generated: {timestamp}", fill="gray", font=font)
     
     # Save combined image
