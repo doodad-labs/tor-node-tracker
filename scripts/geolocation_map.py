@@ -54,53 +54,31 @@ if worldmap is not None:
 else:
     ax.set_facecolor("#e6f2ff")
 
-# Aggregate nodes by country
-node_by_country = df.groupby('country').size().reset_index(name='node_count')
+# Aggregate nodes by location (aggregate nearby points)
+node_counts = df.groupby(['latitude', 'longitude']).size().reset_index(name='node_count')
 
-print(f"Found {len(node_by_country)} countries with Tor nodes")
-print(f"Total nodes: {node_by_country['node_count'].sum()}")
+print(f"Found {len(node_counts)} unique lat/lon locations with Tor nodes")
+print(f"Total nodes: {node_counts['node_count'].sum()}")
 
-# Calculate country centroids from the world map
-if worldmap is not None:
-    # Create a mapping of country ISO codes to centroids
-    worldmap['centroid'] = worldmap.geometry.centroid
-    centroid_map = dict(zip(worldmap['ISO_A2'], worldmap['centroid']))
-    
-    # Map country codes to centroids
-    node_by_country['geometry'] = node_by_country['country'].map(centroid_map)
-    
-    # Remove any countries that couldn't be mapped
-    node_by_country = node_by_country.dropna(subset=['geometry'])
-    
-    # Extract latitude and longitude from centroids
-    node_by_country['longitude'] = node_by_country['geometry'].apply(lambda geom: geom.x)
-    node_by_country['latitude'] = node_by_country['geometry'].apply(lambda geom: geom.y)
-    
-    x = node_by_country['longitude'].values
-    y = node_by_country['latitude'].values
-    z = node_by_country['node_count'].values
-    
-    print(f"Successfully mapped {len(node_by_country)} countries to centroids")
-else:
-    print("Warning: Could not use country centroids without world map data")
-    x = []
-    y = []
-    z = []
+# Extract coordinates
+x = node_counts['longitude'].values
+y = node_counts['latitude'].values
+z = node_counts['node_count'].values
 
 # Plot scatter points (with capped sizes for better visibility)
 if len(x) > 0:
-    # Cap bubble sizes - max size of 300 for largest countries
-    bubble_sizes = z * 1.5
-    bubble_sizes = bubble_sizes.clip(max=300)
+    # Cap bubble sizes - max size of 50 for better visibility with many points
+    bubble_sizes = z * 0.5
+    bubble_sizes = bubble_sizes.clip(max=50)
     
     scatter = plt.scatter(
         x, y,
-        s=bubble_sizes,      # Size capped at 300 for visibility
+        s=bubble_sizes,      # Size capped at 50 for visibility
         c=z,                # Color by node count
-        alpha=0.7,
+        alpha=0.6,
         cmap='autumn',
         edgecolors='darkred',
-        linewidth=1,
+        linewidth=0.5,
         vmin=0,
         vmax=z.max()
     )
@@ -110,7 +88,7 @@ if len(x) > 0:
     cbar.ax.tick_params(labelsize=8)
     cbar.set_label('Number of Nodes', fontsize=9)
 else:
-    print("No country data to plot")
+    print("No location data to plot")
 
 # Set axis limits
 plt.xlim([-180, 180])
