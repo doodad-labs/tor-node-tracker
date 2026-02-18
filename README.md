@@ -20,10 +20,13 @@ This system continuously monitors and archives Tor network infrastructure by col
 ├── active/                     # Current node lists (hourly updates)
 │   ├── relay-nodes.json        # All active relays (JSON)
 │   ├── relay-nodes.txt         # All active relays (Plain text)
+│   ├── relay-nodes.csv         # All active relays (Comma-separated values)
 │   ├── exit-nodes.json         # Exit-capable relays (JSON)
 │   ├── exit-nodes.txt          # Exit-capable relays (Plain text)
+│   ├── exit-nodes.csv          # Exit-capable relays (Comma-separated values)
 │   ├── guard-nodes.json        # Guard-capable relays (JSON)
-│   └── guard-nodes.txt         # Guard-capable relays (Plain text)
+│   ├── guard-nodes.txt         # Guard-capable relays (Plain text)
+│   └── guard-nodes.csv         # Guard-capable relays (Comma-separated values)
 │
 └── history/                    # Historical archives
      └── YYYY/
@@ -31,10 +34,13 @@ This system continuously monitors and archives Tor network infrastructure by col
              └── YYYY-MM-DD/            # Daily snapshots
                  ├── relay-nodes.json   # All active relays (JSON)
                  ├── relay-nodes.txt    # All active relays (Plain text)
+                 ├── relay-nodes.csv    # All active relays (Comma-separated values)
                  ├── exit-nodes.json    # Exit-capable relays (JSON)
                  ├── exit-nodes.txt     # Exit-capable relays (Plain text)
+                 ├── exit-nodes.csv     # Exit-capable relays (Comma-separated values)
                  ├── guard-nodes.json   # Guard-capable relays (JSON)
-                 └── guard-nodes.txt    # Guard-capable relays (Plain text)
+                 ├── guard-nodes.txt    # Guard-capable relays (Plain text)
+                 └── guard-nodes.csv    # Guard-capable relays (Comma-separated values)
 ```
 
 ## Data Specifications
@@ -44,6 +50,7 @@ This system continuously monitors and archives Tor network infrastructure by col
 - **Formats Available:**
   - **JSON** – Structured data for programmatic access and analysis
   - **Plain Text** – Human-readable format for quick reference and simple parsing
+  - **Comma-separated values** – Analytical format for quick parsing
 - **Retention:** Complete historical records with daily organization
 
 ## Ethical Consideration
