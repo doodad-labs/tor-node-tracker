@@ -55,7 +55,7 @@ This system continuously monitors and archives Tor network infrastructure by col
 
 ## Analytics
 
-![stats/combined-analytics.png](stats/combined-analytics.png)
+![stats/geolocation-map.png](stats/geolocation-map.png)
 
 <details>
      <summary>Node Churn Rate & Lifetime</summary>
