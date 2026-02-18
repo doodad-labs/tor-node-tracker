@@ -10,11 +10,11 @@ PROJECT_ROOT = SCRIPT_DIR.parent
 ACTIVE_DIR = PROJECT_ROOT / "active"
 OUTPUT_FILE = PROJECT_ROOT / "stats" / "node-distribution-pie.png"
 
-# Colors with 60% opacity (alpha=0.6)
-COLORS = {
-    "relay": (1, 0, 0, 0.6),    # Red with 60% opacity
-    "exit": (0, 1, 0, 0.6),     # Green with 60% opacity
-    "guard": (0, 0, 1, 0.6),    # Blue with 60% opacity
+# Colors with 60% opacity (alpha=1)
+COLOURS = {
+    "relay": (189/255, 97/255, 87/255, 1),  # red
+    "exit": (86/255, 189/255, 164/255, 1),   # green
+    "guard": (87/255, 148/255, 189/255, 1),  # blue
 }
 
 def count_nodes_in_file(filepath):
@@ -45,7 +45,7 @@ def generate_pie_chart():
     # Prepare data
     sizes = [relay_count, exit_count, guard_count]
     labels = ["Relay", "Exit", "Guard"]
-    colors_list = [COLORS["relay"], COLORS["exit"], COLORS["guard"]]
+    colors_list = [COLOURS["relay"], COLOURS["exit"], COLOURS["guard"]]
     
     # Create figure and axis
     plt.figure(figsize=(10, 8))
@@ -57,7 +57,6 @@ def generate_pie_chart():
         colors=colors_list,
         autopct="%1.1f%%",
         startangle=90,
-        textprops={"fontsize": 12, "fontweight": "bold"}
     )
     
     # Enhance autotext (percentage labels)
@@ -67,7 +66,7 @@ def generate_pie_chart():
         autotext.set_fontweight("bold")
     
     # Add title
-    plt.title("Tor Network Node Distribution", fontsize=14, fontweight="bold", pad=20)
+    plt.title("Tor Network Node Distribution", pad=20)
     
     # Add legend with counts
     legend_labels = [
@@ -75,7 +74,7 @@ def generate_pie_chart():
         f"Exit: {exit_count:,}",
         f"Guard: {guard_count:,}"
     ]
-    plt.legend(legend_labels, fontsize=11, loc="upper left", bbox_to_anchor=(0.85, 1))
+    plt.legend(legend_labels, loc="upper left", bbox_to_anchor=(0.85, 1))
     
     # Equal aspect ratio ensures that pie is drawn as a circle
     plt.axis("equal")

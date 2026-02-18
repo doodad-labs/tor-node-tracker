@@ -14,12 +14,11 @@ PROJECT_ROOT = SCRIPT_DIR.parent
 HISTORY_DIR = PROJECT_ROOT / "history"
 OUTPUT_FILE = PROJECT_ROOT / "stats" / "network-chart.png"
 
-# Colors with 60% opacity (alpha=0.6)
-COLORS = {
-    "relay": (1, 0, 0, 0.6),  # Red with 60% opacity
-    "exit": (0, 1, 0, 0.6),   # Green with 60% opacity
-    "guard": (0, 0, 1, 0.6),  # Blue with 60% opacity
-    "all": "#56bda4"          # Teal color
+COLOURS = {
+    "relay": (189/255, 97/255, 87/255, 1),  # red
+    "exit": (86/255, 189/255, 164/255, 1),   # green
+    "guard": (87/255, 148/255, 189/255, 1),  # blue
+    "all": (116/255, 87/255, 189/255, 1),  # purple
 }
 
 def count_nodes_in_file(filepath):
@@ -83,16 +82,15 @@ def generate_chart(data):
     plt.figure(figsize=(14, 8))
     
     # Plot lines
-    plt.plot(sorted_dates, relay_counts, color=COLORS["relay"], label="Relay", linewidth=2.5)
-    plt.plot(sorted_dates, exit_counts, color=COLORS["exit"], label="Exit", linewidth=2.5)
-    plt.plot(sorted_dates, guard_counts, color=COLORS["guard"], label="Guard", linewidth=2.5)
-    plt.plot(sorted_dates, all_counts, color=COLORS["all"], label="All Nodes", linewidth=2.5)
-    
+    plt.plot(sorted_dates, relay_counts, color=COLOURS["relay"], label="Relay", linewidth=2.5)
+    plt.plot(sorted_dates, exit_counts, color=COLOURS["exit"], label="Exit", linewidth=2.5)
+    plt.plot(sorted_dates, guard_counts, color=COLOURS["guard"], label="Guard", linewidth=2.5)
+    plt.plot(sorted_dates, all_counts, color=COLOURS["all"], label="All Nodes", linewidth=2.5)
+
     # Format the chart
-    plt.xlabel("Date", fontsize=12, fontweight="bold")
-    plt.ylabel("Node Count", fontsize=12, fontweight="bold")
-    plt.title("Tor Network Size Over Time", fontsize=14, fontweight="bold")
-    plt.legend(fontsize=11, loc="best")
+    plt.ylabel("Node Count")
+    plt.title("Tor Network Size Over Time")
+    plt.legend(loc="best")
     plt.grid(True, alpha=0.3)
     
     # Format x-axis to show dates nicely (start of each month)
@@ -100,6 +98,8 @@ def generate_chart(data):
     ax.xaxis.set_major_locator(mdates.MonthLocator())
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m-%d"))
     ax.xaxis.set_minor_locator(mdates.WeekdayLocator())  # Minor gridlines for weeks
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
     plt.xticks(rotation=45, ha="right")
     
     # Tight layout to prevent label cutoff
