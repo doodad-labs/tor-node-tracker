@@ -53,9 +53,11 @@ This system continuously monitors and archives Tor network infrastructure by col
   - **Comma-separated values** – Analytical format for quick parsing
 - **Retention:** Complete historical records with daily organization
 
-## Analytics
+## Analytical Charts
 
 ![stats/geolocation-map.png](stats/geolocation-map.png)
+
+These charts are generated daily. The latest up-to-date versions can be found in [`stats/`](./stats/), where they are refreshed each day. Historical charts are available in their respective [`history/`](./history/) directories.
 
 <details>
      <summary>Node Churn Rate & Lifetime</summary>
@@ -93,6 +95,13 @@ The data is suitable for:
 ## Automation
 
 All data collection, processing, and archiving is fully automated through scheduled workflows, ensuring consistent updates without manual intervention.
+
+## Changelogs
+- [`1da73f7`](https://github.com/doodad-labs/tor-node-tracker/commit/1da73f76f0cc2f5530777457053b53f960349c21) Introduction of Churn Rate and Lifetime Chart
+- [`d6218c6`](https://github.com/doodad-labs/tor-node-tracker/commit/d6218c63fe833ac96a9d79960b32935c18877841) Introduction of Active Node Location Chart
+- [`6e7face`](https://github.com/doodad-labs/tor-node-tracker/commit/6e7faceb24bfe1fa728d69ba00edbc86f77fa301) Introduction of Active Node Location Data
+- [`c0d14be`](https://github.com/doodad-labs/tor-node-tracker/commit/c0d14bee3cea6257ce00b9f876a62175dcc0b4c7) Introduction of Network Growth and Node Distribution Analytical charts
+- [`73d0770`](https://github.com/doodad-labs/tor-node-tracker/commit/73d07708ed020fb6c8f6b7b3d59b56f8a0989a48) Introduction of CSV data format 
 
 ## Outage History
 
