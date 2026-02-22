@@ -1,8 +1,8 @@
 # Tor Network Node Tracker
 
-[![Relay Nodes](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdoodad-labs%2Ftor-nodes%2Frefs%2Fheads%2Fmain%2Fstats%2Frelay-nodes.json&style=flat-square&cache=1)](https://github.com/doodad-labs/tor-nodes/blob/main/active/relay-nodes.txt)
-[![Guard Nodes](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdoodad-labs%2Ftor-nodes%2Frefs%2Fheads%2Fmain%2Fstats%2Fguard-nodes.json&style=flat-square&cache=1)](https://github.com/doodad-labs/tor-nodes/blob/main/active/guard-nodes.txt)
-[![Exit Nodes](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdoodad-labs%2Ftor-nodes%2Frefs%2Fheads%2Fmain%2Fstats%2Fexit-nodes.json&style=flat-square&cache=1)](https://github.com/doodad-labs/tor-nodes/blob/main/active/exit-nodes.txt)
+[![Relay Nodes](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdoodad-labs%2Ftor-node-tracker%2Frefs%2Fheads%2Fmain%2Fstats%2Frelay-nodes.json&style=flat-square&cache=1)](https://github.com/doodad-labs/tor-nodes/blob/main/active/relay-nodes.txt)
+[![Guard Nodes](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdoodad-labs%2Ftor-node-tracker%2Frefs%2Fheads%2Fmain%2Fstats%2Fguard-nodes.json&style=flat-square&cache=1)](https://github.com/doodad-labs/tor-nodes/blob/main/active/guard-nodes.txt)
+[![Exit Nodes](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdoodad-labs%2Ftor-node-tracker%2Frefs%2Fheads%2Fmain%2Fstats%2Fexit-nodes.json&style=flat-square&cache=1)](https://github.com/doodad-labs/tor-nodes/blob/main/active/exit-nodes.txt)
 
 An automated hourly archive of active Tor network nodes with comprehensive historical tracking. This repository provides structured datasets of relay, exit, and guard nodes for research, monitoring, and analysis purposes.
 
