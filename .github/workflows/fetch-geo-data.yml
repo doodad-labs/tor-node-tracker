@@ -1,0 +1,70 @@
+name: Update Tor Nodes Geo-location Data
+
+on:
+  schedule:
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-tor-nodes:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout workflow repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Tor node files
+        run: npx tsx scripts/geo-location.ts
+
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          repository: doodad-labs/tor-node-tracker
+          ref: main
+          path: target-repo
+          token: ${{ secrets.BOT_PAT }}
+
+      - name: Copy all generated files to target repository
+        run: |
+          # Copy everything from out directory recursively
+          cp -r out/* target-repo/
+          
+          # Remove the out directory itself if it gets copied
+          rm -rf target-repo/out
+
+      - name: Configure Git
+        run: |
+          cd target-repo
+          git config user.name "Doodadlabs Threat Intel"
+          git config user.email "doodadlabs-threat-intel@users.noreply.github.com"
+
+      - name: Commit and push all changes
+        run: |
+          cd target-repo
+          
+          # Add all files (new, modified, deleted)
+          git add -A
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            # Get list of changed files for commit message
+            CHANGED_FILES=$(git diff --name-only --staged | head -10 | tr '\n' ', ' | sed 's/, $//')
+            COMMIT_MSG="Update Tor node geolocation data - $(date +'%Y-%m-%d %H:%M:%S')"
+            
+            git commit -m "$COMMIT_MSG"
+            git push
+          fi
